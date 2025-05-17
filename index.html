@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHOT | Own Your Culture. Style. Performance.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --shot-yellow: #f7b613;
+            --shot-teal: #1abc9c;
+            --shot-purple: #6b00db;
+            --shot-black: #000000;
+            --shot-dark-grey: #121212;
+            --shot-light-grey: #f0f0f0;
+            --shot-white: #ffffff;
+            --font-primary: 'Poppins', sans-serif;
+            --font-secondary: 'Montserrat', sans-serif;
+        }
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-secondary);
+            color: var(--shot-white);
+            background-color: var(--shot-black);
+            line-height: 1.7;
+            font-size: 16px;
+            overflow-x: hidden; 
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-primary);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.1; }
+        h2 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.2; }
+        h3 { font-size: clamp(1.5rem, 4vw, 2.2rem); line-height: 1.3; }
+        h4 { font-size: clamp(1.2rem, 3vw, 1.8rem); line-height: 1.4; }
+
+        p {
+            margin-bottom: 20px;
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+            color: var(--shot-light-grey);
+        }
+
+        a {
+            color: var(--shot-yellow);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover { color: var(--shot-teal); }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .section {
+            padding: clamp(60px, 10vh, 120px) 0;
+            position: relative;
+            overflow: hidden; 
+        }
+        .section-title { text-align: center; margin-bottom: 40px; }
+        .section-title h2 { margin-bottom: 10px; }
+        .section-title p { max-width: 700px; margin-left: auto; margin-right: auto; font-size: clamp(1rem, 2vw, 1.25rem); }
+
+        /* Buttons & Static Text CTA */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            font-family: var(--font-primary);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 50px; 
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+            font-size: clamp(0.8rem, 1.2vw, 1rem);
+            text-align: center;
+        }
+        .btn-primary { background-color: var(--shot-yellow); color: var(--shot-black); }
+        .btn-primary:hover { background-color: var(--shot-white); color: var(--shot-black); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(247,182,19,0.3); }
+        
+        .btn-secondary { background-color: var(--shot-purple); color: var(--shot-white); }
+        .btn-secondary:hover { background-color: var(--shot-teal); color: var(--shot-black); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(107,0,219,0.3); }
+
+        .btn-outline { background-color: transparent; color: var(--shot-white); border-color: var(--shot-white); }
+        .btn-outline:hover { background-color: var(--shot-white); color: var(--shot-black); transform: translateY(-3px); }
+
+        .btn-teal { background-color: var(--shot-teal); color: var(--shot-black); }
+        .btn-teal:hover { background-color: var(--shot-white); color: var(--shot-black); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(26,188,156,0.3); }
+
+        .btn-purple { background-color: var(--shot-purple); color: var(--shot-white); }
+        .btn-purple:hover { background-color: var(--shot-white); color: var(--shot-black); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(107,0,219,0.3); }
+        
+        .btn-gold { background-color: var(--shot-yellow); color: var(--shot-black); } /* Same as btn-primary */
+        .btn-gold:hover { background-color: var(--shot-white); color: var(--shot-black); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(247,182,19,0.3); }
+
+
+        .btn-nav { 
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            background-color: var(--shot-teal); 
+            color: var(--shot-black);
+        }
+        .btn-nav:hover {
+            background-color: var(--shot-white);
+            color: var(--shot-black);
+        }
+        .coming-soon-text {
+            display: inline-block;
+            padding: 12px 30px;
+            font-family: var(--font-primary);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 50px;
+            font-size: clamp(0.8rem, 1.2vw, 1rem);
+            text-align: center;
+            background-color: var(--shot-dark-grey); 
+            color: var(--shot-light-grey);
+            border: 2px solid var(--shot-purple);
+            opacity: 0.7;
+        }
+
+
+        /* Header & Navigation */
+        header {
+            padding: 10px 0; 
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: padding 0.3s ease, background-color 0.3s ease;
+        }
+        header.scrolled {
+            padding: 8px 0; 
+            background-color: rgba(18, 18, 18, 0.95); 
+        }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo-link img {
+            height: clamp(35px, 5vw, 50px); 
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+        .logo-link:hover img {
+            transform: scale(1.05);
+        }
+
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: clamp(15px, 2vw, 30px);
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--shot-light-grey);
+            font-weight: 600;
+            font-size: clamp(0.8rem, 1.2vw, 0.9rem);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding-bottom: 5px;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--shot-yellow);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--shot-yellow);
+        }
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 28px;
+            background: none;
+            border: none;
+            color: var(--shot-white);
+            cursor: pointer;
+            z-index: 1005; 
+            padding: 5px; 
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding-top: 80px; 
+            background-color: var(--shot-black); 
+        }
+        .hero-background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            z-index: 0; 
+            filter: brightness(0.4); 
+        }
+        .hero::before { /* Overlay */
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.85) 100%);
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+        .hero-content .hero-logo-container {
+            margin-bottom: 20px;
+        }
+        .hero-content .hero-logo-container img {
+            max-height: 80px; 
+            width: auto;
+        }
+        .hero-content .subheadline {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            color: var(--shot-light-grey);
+            margin: 20px 0 30px;
+            line-height: 1.6;
+        }
+        .hero-content .core-message {
+            font-family: var(--font-primary);
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 700;
+            color: var(--shot-white); /* Base color for the message */
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+        .hero-content .core-message .take-shot { color: var(--shot-teal); }
+        .hero-content .core-message .own-it { color: var(--shot-purple); }
+        .hero-content .core-message .make-impact { color: var(--shot-yellow); }
+
+        .hero-ctas { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+
+        /* Movement Section */
+        .movement-section { background-color: var(--shot-dark-grey); }
+        .movement-pillars {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); 
+            gap: clamp(20px, 3vw, 30px);
+            margin-top: 50px;
+        }
+        .pillar {
+            background-color: var(--shot-black);
+            padding: clamp(20px, 3vw, 30px);
+            border-radius: 10px;
+            text-align: center;
+            border-left: 5px solid;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+        }
+        .pillar:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        .pillar-image-container {
+            width: 200px; 
+            height: 200px; 
+            margin: 0 auto 20px auto; 
+            border-radius: 5px;
+            overflow: hidden;
+            background-color: #222; 
+        }
+        .pillar-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+        }
+        .pillar h3 { margin-bottom: 15px; font-size: clamp(1.3rem, 3vw, 1.8rem); }
+        .pillar p { font-size: clamp(0.9rem, 1.2vw, 0.95rem); color: var(--shot-light-grey); margin-bottom: 25px; flex-grow: 1; } 
+        
+        .pillar.take-shot { border-color: var(--shot-teal); }
+        .pillar.take-shot h3 { color: var(--shot-teal); } 
+        .pillar.own-it { border-color: var(--shot-purple); }
+        .pillar.own-it h3 { color: var(--shot-purple); } 
+        .pillar.make-impact { border-color: var(--shot-yellow); }
+        .pillar.make-impact h3 { color: var(--shot-yellow); } 
+
+        /* Clubhouse App Section */
+        .app-section { background-color: var(--shot-black); }
+        .app-section .section-title h2 span { color: var(--shot-yellow); }
+        .app-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        @media (min-width: 768px) { .app-grid { grid-template-columns: 1fr 1fr; gap: 60px; } }
+        .app-image-container { text-align: center; }
+        .app-image-container img {
+            max-width: 320px; 
+            width: 100%;
+            height: auto; 
+            border-radius: 30px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+        }
+        .app-features-list { list-style: none; padding-left: 0; margin-top: 20px; }
+        .app-features-list li {
+            padding-left: 30px;
+            position: relative;
+            margin-bottom: 15px;
+            font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+        }
+        .app-features-list li::before {
+            content: '✔'; 
+            color: var(--shot-yellow);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        .app-cta { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 15px; justify-content: center;} 
+
+        /* Sport Head ID Section */
+        .sport-head-section { background-color: var(--shot-dark-grey); }
+        .sport-head-section .section-title h2 span { color: var(--shot-purple); }
+        .sport-head-main-visual { 
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .sport-head-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); 
+            gap: 25px;
+            margin-top: 40px;
+        }
+        .highlight-card {
+            background-color: var(--shot-black);
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid var(--shot-purple);
+        }
+        .highlight-card h4 { color: var(--shot-purple); margin-bottom: 10px; font-size: clamp(1.1rem, 2.5vw, 1.3rem); }
+
+        /* Style & Drops Section */
+        .style-drops-section { background-color: var(--shot-purple); } 
+        .style-drops-section .section-title h2 span { color: var(--shot-yellow); }
+        .style-drops-section .section-title p { color: var(--shot-light-grey); }
+        .drop-item {
+            background-color: var(--shot-dark-grey);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+            text-align: center; 
+        }
+        .drop-item img.collab-logo { max-height: 50px; margin-bottom: 15px; filter: invert(0); display: inline-block;}
+        .drop-item img.product-image { 
+            width:100%; 
+            max-width: 400px; 
+            height:auto; 
+            border-radius: 8px; 
+            margin-bottom:15px;
+            display: block; 
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .drop-item img.product-image.square { 
+            width: 300px; 
+            height: 300px; 
+            object-fit: cover;
+        }
+        .drop-item h4 { color: var(--shot-yellow); }
+        .drop-item .btn { margin-top: 15px; }
+        .tech-info { margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .tech-info h4 { color: var(--shot-teal); }
+
+        /* Train & Perform Section */
+        .train-perform-section { 
+            background-color: var(--shot-purple); 
+            padding-top: clamp(30px, 5vh, 60px); /* Reduced top padding */
+        } 
+        .train-perform-section .section-title h2 span { color: var(--shot-teal); }
+        .train-perform-section .section-title p { color: var(--shot-light-grey); }
+        .perform-features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); 
+            gap: 25px;
+            margin-top: 40px;
+        }
+        .perform-feature-card {
+            background-color: var(--shot-black);
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid var(--shot-teal);
+        }
+        .perform-feature-card h4 { color: var(--shot-teal); margin-bottom: 10px; font-size: clamp(1.1rem, 2.5vw, 1.3rem); }
+
+        /* Make Impact Section */
+        .impact-section { background-color: var(--shot-yellow); color: var(--shot-black); }
+        .impact-section .section-title h2 { color: var(--shot-black); }
+        .impact-section .section-title h2 span { color: var(--shot-purple); }
+        .impact-section p { color: var(--shot-dark-grey); }
+        .impact-images-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+            gap: 15px;
+            margin-bottom: 30px;
+            justify-content: center; 
+        }
+        .impact-images-grid img {
+            width: 180px; 
+            height: 180px; 
+            object-fit: cover;
+            border-radius: 8px;
+            margin: 0 auto; 
+        }
+        .impact-stats {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .stat { text-align: center; padding: 10px; }
+        .stat .number { font-family: var(--font-primary); font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 900; color: var(--shot-black); display: block; line-height:1.1; }
+        .stat .label { font-size: clamp(0.8rem, 1.5vw, 1rem); text-transform: uppercase; letter-spacing: 1px; color: var(--shot-dark-grey); font-weight: 600; }
+        .impact-section .btn { background-color: var(--shot-black); color: var(--shot-white); }
+        .impact-section .btn:hover { background-color: var(--shot-purple); color: var(--shot-white); }
+
+        /* Join/Footer CTA Section */
+        .cta-footer-section { background-color: var(--shot-purple); text-align: center; }
+        .cta-footer-section h2 { color: var(--shot-white); }
+        .cta-footer-section .subheadline { color: var(--shot-light-grey); max-width: 600px; margin: 0 auto 30px; font-size: clamp(1rem, 1.8vw, 1.2rem); }
+        .cta-footer-section .btn { margin-top: 20px; }
+        .cta-footer-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 20px;}
+
+
+        /* Footer */
+        footer {
+            background-color: var(--shot-black);
+            padding: 50px 0 20px;
+            text-align: center;
+            border-top: 3px solid var(--shot-yellow);
+        }
+        .footer-logo-container .logo-link img {
+             height: clamp(40px, 6vw, 60px);
+             margin-bottom: 10px;
+        }
+        .footer-tagline {
+            font-size: 1rem; 
+            color: var(--shot-light-grey);
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+            font-family: var(--font-primary);
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .footer-tagline .take-shot-dot { color: var(--shot-teal); }
+        .footer-tagline .own-it-dot { color: var(--shot-purple); }
+        .footer-tagline .make-impact-dot { color: var(--shot-yellow); }
+
+        .social-links { margin-bottom: 25px; }
+        .social-links a {
+            color: var(--shot-light-grey);
+            font-size: 1.5rem; 
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        .social-links a svg { 
+            width: 24px; height: 24px; fill: currentColor;
+        }
+        .social-links a:hover { color: var(--shot-yellow); }
+        .footer-nav { margin-bottom: 20px; }
+        .footer-nav a {
+            color: var(--shot-light-grey);
+            margin: 0 10px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+        .footer-nav a:hover { color: var(--shot-yellow); }
+        .footer-contact { margin-bottom: 15px; font-size: 0.9rem;}
+        .copyright { font-size: 0.8rem; color: #777; }
+        .copyright a { color: #999; text-decoration: underline;}
+        .copyright a:hover { color: var(--shot-yellow); }
+
+
+        /* Responsive Mobile Menu */
+        @media (max-width: 900px) { 
+            .nav-links {
+                display: none; 
+                flex-direction: column;
+                position: fixed; 
+                top: 0; 
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background-color: rgba(18, 18, 18, 0.98); 
+                backdrop-filter: blur(5px);
+                padding-top: 80px; 
+                align-items: center;
+                justify-content: center;
+                gap: 25px;
+                transform: translateX(100%);
+                transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1); 
+                z-index: 999; 
+            }
+            .nav-links.active {
+                display: flex;
+                transform: translateX(0);
+            }
+            .nav-links a {
+                font-size: 1.3rem; 
+                padding: 15px 0; 
+                color: var(--shot-white); 
+            }
+            .nav-links a:hover, .nav-links a.active {
+                color: var(--shot-yellow);
+            }
+            .nav-links a::after { 
+                 background-color: var(--shot-yellow);
+            }
+            .nav-links .btn-nav {
+                font-size: 1.2rem;
+                padding: 12px 35px;
+                width: 80%;
+                max-width: 280px;
+            }
+            .mobile-toggle {
+                display: block;
+            }
+            .hero-ctas .btn { width: 80%; max-width: 280px; } 
+        }
+
+        @media (max-width: 576px) {
+            .movement-pillars { grid-template-columns: 1fr; }
+            .pillar-image-container { width: 150px; height: 150px; } 
+            .app-grid { grid-template-columns: 1fr; }
+            .app-image-container { order: -1; margin-bottom: 30px; } 
+            .app-cta { flex-direction: column; align-items: center;}
+            .app-cta .btn { width: 100%; max-width: 300px;}
+            .sport-head-highlights { grid-template-columns: 1fr; }
+            .perform-features-grid { grid-template-columns: 1fr; }
+            .impact-images-grid img { width: 100%; height: auto; max-height: 200px;} 
+            .impact-stats { flex-direction: column; gap: 30px; }
+            .hero-ctas { flex-direction: column; align-items: center; }
+            .cta-footer-actions {flex-direction: column; align-items: center;}
+            .cta-footer-actions .btn { width: 80%; max-width: 300px;}
+            .footer-nav { display: flex; flex-direction: column; gap: 10px;}
+        }
+
+    </style>
+</head>
+<body>
+    <header id="main-header">
+        <div class="container header-container">
+            <a href="#hero" class="logo-link">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZNxN2v-tgf_-t2Oic-m3dC2jtm3_zllEu-Q&s" alt="SHOT Logo">
+            </a>
+            <nav>
+                <ul class="nav-links" id="nav-links-menu">
+                    <li><a href="#movement">SHOT</a></li>
+                    <li><a href="#clubhouse-app">Clubhouse</a></li>
+                    <li><a href="#sport-head">Sport Head</a></li>
+                    <li><a href="#style-drops">Style</a></li>
+                    <li><a href="#train-perform">Perform</a></li>
+                    <li><a href="#make-impact">Impact</a></li>
+                    <li><a href="mailto:contact@shotclubhouse.com?subject=Waitlist%20Inquiry" class="btn btn-nav">Join Waitlist</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-toggle" id="mobile-toggle-button" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links-menu">
+                &#9776; </button>
+        </div>
+    </header>
+
+    <section id="hero" class="section hero">
+        <video autoplay loop muted playsinline class="hero-background-video" poster="https://www.shotclubhouse.com/s/cdn/v1.0/i/m?w=1920&h=1080&tok=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjoiZDYxYjU1NzAtZjQ1Ny00MmMwLThkNzYtYzA3Mzc4ZjhkYjFiO1Nob3QtS2lja3MtRWx5LVByb21vLVdlYi1CYW5uZXItMTkyMHg2MDAucG5nIiwiaWF0IjoxNzE1OTE4NzMxfQ.U8H_9M5v_2v_S8fL9xG_5m7g8g_j_Y0b4ZzFwXkYxDc">
+            Your browser does not support the video tag.
+        </video>
+        <div class="hero-content">
+            <div class="hero-logo-container">
+                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZNxN2v-tgf_-t2Oic-m3dC2jtm3_zllEu-Q&s" alt="SHOT Logo">
+            </div>
+            <p class="subheadline">Where sport meets style, tech, and real impact. From fans to ballers, coaches to creators – SHOT is your space to own your journey, culture, style, performance, and passion.</p>
+            <p class="core-message">
+                <span class="take-shot">TAKE YOUR SHOT.</span> 
+                <span class="own-it">OWN IT.</span> 
+                <span class="make-impact">MAKE IMPACT.</span>
+            </p>
+            <div class="hero-ctas">
+                <a href="mailto:contact@shotclubhouse.com?subject=Clubhouse%20Waitlist" class="btn btn-teal">Join Waitlist</a>
+                <a href="mailto:contact@shotclubhouse.com?subject=Register%20for%20Drops" class="btn btn-purple">Register for Drops</a>
+                <a href="https://shot.classforkids.io/" target="_blank" class="btn btn-gold">Search Sessions</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="movement" class="section movement-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Three Pillars<span>.</span> One Movement<span>.</span></h2>
+                <p>SHOT isn't just a brand; it's how you play, live, and connect. It’s about your culture, your style, your performance, your journey, your passion. It all starts here.</p>
+            </div>
+            <div class="movement-pillars">
+                <div class="pillar take-shot">
+                    <div class="pillar-image-container">
+                        <img src="https://i.imgur.com/2w2rQD4.jpg" alt="Player taking a dynamic shot in a game">
+                    </div>
+                    <div>
+                        <h3 style="color: var(--shot-teal);">TAKE YOUR SHOT</h3>
+                        <p><strong>Who’s It For?</strong> This is for everyone: the players, parents, coaches, fans, clubs, and associations. <br><strong>The Vibe:</strong> Your moment is NOW. Jump in, try something new, grab that opportunity. Whether you're a baller, supporter, creator, or leader – you’re in. No egos, no filters. Courage meets opportunity.</p>
+                    </div>
+                </div>
+                <div class="pillar own-it">
+                     <div class="pillar-image-container">
+                        <img src="https://i.imgur.com/fTvsGbK.jpg" alt="Individual showcasing unique style and confidence">
+                    </div>
+                    <div>
+                        <h3 style="color: var(--shot-purple);">OWN IT.</h3>
+                        <p><strong>The Core:</strong> This is where your SHOT journey becomes uniquely YOU. Own your style, culture, performance, progress, passion. From your custom Sport Head avatar to your training grind, your exclusive kit to your impact story – define and share who you are. Authenticity. Claim your place.</p>
+                    </div>
+                </div>
+                <div class="pillar make-impact">
+                     <div class="pillar-image-container">
+                        <img src="https://i.imgur.com/JWvNRVO.jpg" alt="Community members working together making an impact">
+                    </div>
+                    <div>
+                        <h3 style="color: var(--shot-yellow);">MAKE IMPACT.</h3>
+                        <p><strong>The Ripple Effect:</strong> For the ambitious, the driven, the underdogs, the teams. Transform your ambition into real change – for yourself, your squad, your community. Back the underdog, change the game, together. Every goal, every drop, every connection fuels something bigger.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="clubhouse-app" class="section app-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>The Clubhouse<span>:</span> Your Digital Base<span>.</span> All Identity<span>.</span></h2>
+                <p>Welcome to the SHOT Clubhouse – your 24/7 digital companion. Part coach, part content feed, part drop zone. 100% Sport Head.</p>
+            </div>
+            <div class="app-grid">
+                <div class="app-content">
+                    <h3>Connect Your Sport Life</h3>
+                    <p>The SHOT Clubhouse app is where it all comes together. Track your game, train with pro-level tools powered by real expertise from UEFA, FA, ABA and more, and unlock tech-enabled exclusive drops. It’s your timeline, your unique Sport Head avatar, your journey.</p>
+                    <h4>Features Tailored For You:</h4>
+                    <ul class="app-features-list">
+                        <li><strong>Players/Athletes:</strong> Bespoke development plans, PERFORM framework tracking, session logs, player feedback.</li>
+                        <li><strong>Coaches/Trainers:</strong> Manage teams, create/assign plans, deliver feedback, monitor progress.</li>
+                        <li><strong>Every Sport Head:</strong> Build your Sport Head ID, access exclusive drops, connect with the community.</li>
+                    </ul>
+                    <p><strong>AI-Powered Pathways:</strong> Our context-driven AI provides plans and pathways using guidance from world-leading sports bodies for football, boxing, basketball, and beyond.</p>
+                    <div class="app-cta">
+                        <a href="mailto:contact@shotclubhouse.com?subject=Clubhouse%20App%20Waitlist" class="btn btn-primary">Join The Waitlist</a>
+                    </div>
+                </div>
+                <div class="app-image-container">
+                    <img src="https://i.imgur.com/9ZnJAe7.png" alt="SHOT Clubhouse App Interface on a Phone">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sport-head" class="section sport-head-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>You're Not Just a Player<span>.</span> You're a <span>Sport Head.</span></h2>
+                <p>Your SHOT identity is more than stats – it’s how you show up. It’s your culture, your style, your passion, expressed. Your Sport Head is your unique, configurable digital avatar – unmistakably you.</p>
+            </div>
+            <div class="sport-head-main-visual">
+                 <p class="coming-soon-text">Sport Head Avatars: Coming Soon</p>
+            </div>
+            <div class="sport-head-highlights">
+                 <div class="highlight-card">
+                    <h4>Your Unique Look</h4>
+                    <p>Custom kit, unique style – make it yours. Millions of combinations, one you.</p>
+                </div>
+                <div class="highlight-card">
+                    <h4>Dynamic Timeline</h4>
+                    <p>Track and share your progress, sessions, highlights, and streaks. Your journey, visualized.</p>
+                </div>
+                <div class="highlight-card">
+                    <h4>Multi-Sport Universe</h4>
+                    <p>Football, boxing, basketball, and more – your identity flexes with your passions.</p>
+                </div>
+                <div class="highlight-card">
+                    <h4>Connected Experience</h4>
+                    <p>Links your physical SHOT gear, exclusive drops, and your journey to your digital profile.</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                 <p class="coming-soon-text">Design Your Sport Head: Coming Soon</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="style-drops" class="section style-drops-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Style & Drops<span>:</span> Own The <span>Culture.</span></h2>
+                <p>SHOT drops are more than clothing – they're statements. Your culture, your style, your identity. Tech-enabled and always limited, each piece unlocks more or gives back.</p>
+            </div>
+            <div class="drop-item">
+                <h4>Erreà x SHOT</h4>
+                 <img src="https://i.imgur.com/l6bNTzT.jpg" alt="SHOT x Errea Streetwear Collaboration" class="product-image">
+                <p>From the Milan catwalk to the Italian terraces, SHOT x Erreà is where sport meets style, grit meets craft. Erreà has been the go-to for clubs that wear their identity with pride – Millwall, QPR, Sheffield United, Parma, Iceland, Norwich and more. Over 30 years of technical kit design, trusted from grassroots to global tournaments. Now, they link with SHOT – the British-born brand remixing sport culture with tech, style, and street credibility. This drop fuses Erreà’s elite heritage with SHOT’s raw energy, built for the next gen of ballers, fans and creators. Performance DNA. Street-level attitude. Culture made wearable.</p>
+                <a href="mailto:contact@shotclubhouse.com?subject=Errea%20Collab%20First%20Access" class="btn btn-primary">Sign Up For First Access</a>
+            </div>
+            <div class="drop-item">
+                <h4>SHOT Tech-Enabled Caps</h4>
+                <img src="https://i.imgur.com/YscNs34.png" alt="SHOT Tech-Enabled Cap" class="product-image square">
+                <p>Dropping soon: the SHOT cap. Where style meets function. British grit. Italian craft. Embedded with smart tech. This isn’t just a cap – it’s your Sport Head in physical form. Tap or scan to unlock your SHOT profile. Track your stats, rep your level, and stay connected with your club or crew. From side streets to stadiums, this cap carries meaning. Tech you can wear. Style you can own. Take your shot.</p>
+                <a href="mailto:contact@shotclubhouse.com?subject=SHOT%20Caps%20Notification" class="btn btn-outline">Get Notified For Cap Drops</a>
+            </div>
+            <div class="tech-info">
+                <h4>Tech-Enabled Exclusives</h4>
+                <p>Our limited capsule collections are your key. Tech-enabled drops unlock access to exclusive events, member-only perks, unique digital content for your Sport Head, and future brand collabs. Physical gear, digital power.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="train-perform" class="section train-perform-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Train Smarter<span>.</span> Perform Stronger<span>.</span> Own Your <span>Development.</span></h2>
+                <p>Forget old-school limits. SHOT’s PERFORM framework brings elite coaching models, once reserved for pro academies, straight to you. Built with experts from UEFA, FA, world-class boxing, and more – this is real development, no fluff.</p>
+            </div>
+            <div class="perform-features-grid">
+                <div class="perform-feature-card">
+                    <h4>Expert Frameworks</h4>
+                    <p>Training plans and pathways grounded in proven methodologies from top sports bodies (UEFA, FA, ABA etc.) for football, boxing, basketball and more.</p>
+                </div>
+                <div class="perform-feature-card">
+                    <h4>AI-Powered Personalisation</h4>
+                    <p>Context-driven AI helps craft bespoke development plans tailored to individual needs and goals, guiding your unique journey.</p>
+                </div>
+                <div class="perform-feature-card">
+                    <h4>For Players & Athletes</h4>
+                    <p>Access age-based goals, interactive session plans, performance tracking, and vital reflection tools.</p>
+                </div>
+                <div class="perform-feature-card">
+                    <h4>For Coaches & Teams</h4>
+                    <p>Manage squads, design sessions, provide instant feedback, and track collective progress with ease.</p>
+                </div>
+                 <div class="perform-feature-card">
+                    <h4>For Parents & Guardians</h4>
+                    <p>Stay connected to the development journey with clear insights and communication channels.</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="mailto:contact@shotclubhouse.com?subject=PERFORM%20in%20App%20Inquiry" class="btn btn-primary" style="background-color: var(--shot-teal); color: var(--shot-black);">Explore PERFORM in App</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="make-impact" class="section impact-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Change Your Game<span>.</span> Change <span>The Game.</span></h2>
+                <p>For the ambitious, the driven, the underdogs, the teams. "Make Impact" is about transforming your ambition into real change – for yourself, your squad, your community. Every SHOT you take, every piece you own, fuels this. It’s our DNA.</p>
+            </div>
+            <h3>Introducing SHOT United<span>.</span></h3>
+            <p>Our not-for-profit heart. SHOT United runs real-world football sessions, from <strong>Little SHOTs (ages 5+)</strong> to <strong>elite coaching for teens and adults</strong>. With over <strong>300+ players hitting the pitch with us every week</strong>, we're growing skills and passion. Your participation and purchases directly fund accessible grassroots coaching, development programs, and opportunities for the next generation. We partner with local sport clubs, associations, and more to deliver this impact.</p>
+            
+            <div class="impact-images-grid">
+                <img src="https://i.imgur.com/eYChVVG.jpg" alt="SHOT United coach with young football players">
+                <img src="https://i.imgur.com/NQDJDgp.jpg" alt="SHOT United team in a huddle">
+                <img src="https://i.imgur.com/FhPZXkY.jpg" alt="Kids enjoying a SHOT United football session">
+            </div>
+
+            <div class="impact-stats">
+                <div class="stat">
+                    <span class="number">300+</span>
+                    <span class="label">Weekly Players</span>
+                </div>
+                <div class="stat">
+                    <span class="number">5+</span>
+                    <span class="label">Age Groups</span>
+                </div>
+                <div class="stat">
+                    <span class="number">100s</span>
+                    <span class="label">Coaching Hours Delivered</span>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="https://shot.classforkids.io/" target="_blank" class="btn">Find a SHOT United Session</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="join" class="section cta-footer-section">
+        <div class="container">
+            <h2>Ready To Take Your Shot<span>?</span></h2>
+            <p class="subheadline">The SHOT Clubhouse app is launching soon. Be the first to build your Sport Head identity, access exclusive drops, and connect with a global community of Sport Heads.</p>
+            <a href="mailto:contact@shotclubhouse.com?subject=Join%20SHOT%20Clubhouse%20Waitlist" class="btn btn-primary" style="background-color: var(--shot-yellow); color: var(--shot-black); padding: 15px 40px; font-size: 1.1rem;">Join The Waitlist Now</a>
+            <div class="cta-footer-actions">
+                <a href="mailto:contact@shotclubhouse.com?subject=Upcoming%20Drops%20Notification" class="btn btn-outline">Upcoming Drops</a>
+                <a href="mailto:partners@shotclubhouse.com?subject=Partnership%20Inquiry" class="btn btn-outline">Partner With SHOT</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo-container">
+                <a href="#hero" class="logo-link">
+                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZNxN2v-tgf_-t2Oic-m3dC2jtm3_zllEu-Q&s" alt="SHOT Logo">
+                </a>
+            </div>
+            <p class="footer-tagline">TAKE YOUR SHOT<span class="take-shot-dot" style="color:var(--shot-teal)">.</span> OWN IT<span class="own-it-dot" style="color:var(--shot-purple)">.</span> MAKE IMPACT<span class="make-impact-dot" style="color:var(--shot-yellow)">.</span></p>
+            <div class="social-links">
+                <a href="https://www.tiktok.com/@shotclubhouse" target="_blank" aria-label="TikTok"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a> 
+                <a href="https://www.instagram.com/@shotclubhouse/" target="_blank" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.149-3.227 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163m0-2.163C8.74 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.74 0 12s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.74 24 12 24s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.687.073-4.947s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98C15.667.014 15.26 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a> 
+                <a href="https://twitter.com/@shotclubhouse" target="_blank" aria-label="Twitter/X"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a> 
+                <a href="https://www.facebook.com/@shotclubhouse" target="_blank" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.378 14.192 5 15.115 5H18V0H14.192C10.596 0 9 1.583 9 4.615z"/></svg></a> 
+            </div>
+            <nav class="footer-nav">
+                <a href="#hero">Home</a>
+                <a href="#clubhouse-app">Clubhouse</a>
+                <a href="#make-impact">Impact</a>
+                <a href="mailto:contact@shotclubhouse.com">Contact</a>
+            </nav>
+            <p class="footer-contact">Contact us at: <a href="mailto:contact@shotclubhouse.com">contact@shotclubhouse.com</a></p>
+            <p class="copyright">&copy; <a href="https://find-and-update.company-information.service.gov.uk/company/16350767" target="_blank">SHOT Clubhouse Ltd (16350767)</a> 2025. All Rights Reserved. UK.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const header = document.getElementById('main-header');
+            const mobileToggle = document.getElementById('mobile-toggle-button');
+            const navLinksMenu = document.getElementById('nav-links-menu');
+            const navLinksArray = Array.from(navLinksMenu.querySelectorAll('a')); 
+
+            if(header) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 50) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                });
+            }
+
+            if (mobileToggle && navLinksMenu) {
+                mobileToggle.addEventListener('click', () => {
+                    navLinksMenu.classList.toggle('active');
+                    const isExpanded = navLinksMenu.classList.contains('active');
+                    mobileToggle.setAttribute('aria-expanded', isExpanded.toString());
+                    mobileToggle.innerHTML = isExpanded ? '&times;' : '&#9776;'; 
+                    document.body.style.overflow = isExpanded ? 'hidden' : '';
+                });
+            }
+
+            navLinksArray.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const isMailto = this.getAttribute('href').startsWith('mailto:');
+                    const isExternal = this.getAttribute('target') === '_blank';
+
+                    if (navLinksMenu.classList.contains('active') && !isMailto && !isExternal) { 
+                        navLinksMenu.classList.remove('active');
+                        mobileToggle.setAttribute('aria-expanded', 'false');
+                        mobileToggle.innerHTML = '&#9776;';
+                        document.body.style.overflow = ''; 
+                    }
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId && targetId.startsWith('#')) {
+                        e.preventDefault();
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            let headerOffset = header ? header.offsetHeight : 0;
+                            let elementPosition = targetElement.getBoundingClientRect().top;
+                            let offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                            
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: "smooth"
+                            });
+                        }
+                    }
+                });
+            });
+
+            const sections = document.querySelectorAll('section[id]');
+            function updateActiveLink() {
+                if (!header) return;
+                let currentSectionId = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - header.offsetHeight - 50; 
+                    if (window.pageYOffset >= sectionTop) {
+                        currentSectionId = section.getAttribute('id');
+                    }
+                });
+
+                navLinksArray.forEach(link => {
+                    link.classList.remove('active');
+                    const href = link.getAttribute('href');
+                    if (href && href === '#' + currentSectionId) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+            window.addEventListener('scroll', updateActiveLink);
+            updateActiveLink(); 
+
+        });
+    </script>
+</body>
+</html>
