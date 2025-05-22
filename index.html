@@ -6,13 +6,21 @@
     <title>SHOT</title>
     <meta name="description" content="SHOT is where sport meets style, tech, and real impact. Join the movement for players, fans, coaches & creators to own their journey, culture, style, performance, and passion.">
     <meta name="keywords" content="SHOT, sport, style, performance, tech, impact, clubhouse, sport head, streetwear, football, boxing, basketball, coaching, community, sports app, fitness, athletic development">
-    <link rel="canonical" href="YOUR_CANONICAL_URL_HERE"> <meta property="og:type" content="website">
-    <meta property="og:url" content="YOUR_WEBSITE_URL_HERE"> <meta property="og:title" content="SHOT | Own Your Sport. Style. Performance.">
+    <link rel="canonical" href="https://www.shotclubhouse.com/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.shotclubhouse.com/">
+    <meta property="og:title" content="SHOT | Own Your Sport. Style. Performance.">
     <meta property="og:description" content="SHOT is where sport meets style, tech, and real impact. Join the movement.">
-    <meta property="og:image" content="YOUR_OG_IMAGE_URL_HERE"> <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="YOUR_WEBSITE_URL_HERE"> <meta property="twitter:title" content="SHOT | Own Your Sport. Style. Performance.">
+    <meta property="og:image" content="https://www.shotclubhouse.com/images/shot-og-image.jpg">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.shotclubhouse.com/">
+    <meta property="twitter:title" content="SHOT | Own Your Sport. Style. Performance.">
     <meta property="twitter:description" content="SHOT is where sport meets style, tech, and real impact. Join the movement.">
-    <meta property="twitter:image" content="YOUR_TWITTER_IMAGE_URL_HERE"> <link rel="icon" href="/favicon.ico" sizes="any">
+    <meta property="twitter:image" content="https://www.shotclubhouse.com/images/shot-twitter-card.jpg">
+
+    <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
@@ -49,11 +57,16 @@
         .animate-slideInRight { transform: translateX(50px); }
         .animate-zoomIn.animated { opacity: 1; transform: scale(1); }
         .animate-zoomIn { transform: scale(0.9); }
+
+        /* Hero Headline Character Animation */
+        .hero-headline-char { display: inline-block; opacity: 0; transform: translateY(25px) scale(0.85) rotateX(-20deg); transform-origin: bottom; animation: popInLetter 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+        @keyframes popInLetter { to { opacity: 1; transform: translateY(0) scale(1) rotateX(0deg); } }
         
-        /* Core Message Line Animation */
+        /* Core Message Line Animation - Solid Colors */
         .core-message-animate { transform-style: preserve-3d; }
         .core-message-line { backface-visibility: hidden; }
-        .core-message-line span { 
+        
+        .core-message-line .text-reveal-span > span { /* These are the JS generated word spans */
             display: inline-block; 
             opacity: 0;
             transform: translateY(20px) scale(0.8);
@@ -89,7 +102,7 @@
             0%, 100% { box-shadow: 0 0 5px var(--shot-purple-glow, rgba(107,0,219,0.3)), 0 0 10px var(--shot-purple-glow, rgba(107,0,219,0.3)); transform: scale(1); }
             50% { box-shadow: 0 0 15px var(--shot-purple-glow, rgba(107,0,219,0.7)), 0 0 25px var(--shot-purple-glow, rgba(107,0,219,0.7)); transform: scale(1.02); }
         }
-        :root { --shot-purple-glow: rgba(107,0,219,0.5); --shot-teal-color: #1abc9c; }
+        :root { --shot-purple-glow: rgba(107,0,219,0.5); --shot-teal-color: #1abc9c; --shot-yellow-color: #f7b613;}
 
         /* Social Link Hover */
         .social-link-item svg { transition: transform 0.3s ease-in-out, fill 0.3s ease-in-out; }
@@ -110,7 +123,7 @@
 
         /* Animated Gradient for CTA Section */
         #join {
-            background: linear-gradient(135deg, var(--shot-purple), var(--shot-teal), var(--shot-yellow), var(--shot-purple));
+            background: linear-gradient(135deg, var(--shot-purple), var(--shot-teal-color), var(--shot-yellow-color), var(--shot-purple)); /* Use CSS vars */
             background-size: 400% 400%;
             animation: gradientShift 15s ease infinite;
         }
@@ -129,25 +142,36 @@
             clip-path: inset(0 0 0 0); 
             opacity: 1;
         }
-
+      
+        /* Drop Item Image Wrapper - Centering Fix */
+        .drop-image-wrapper {
+            position: relative;
+            overflow: hidden; 
+            display: block; /* Ensure it's a block to allow mx-auto to work */
+            /* max-width will be applied via Tailwind on the element */
+        }
+        /* Removed overlay styles as per user request */
 
         /* Reduced motion preferences */
         @media (prefers-reduced-motion: reduce) {
-          .animate-on-scroll, .core-message-line span, 
+          .animate-on-scroll, .hero-headline-char, .core-message-line span > span, 
           .section-title-char-animate .char, .coming-soon-text, 
           .social-link-item svg, .nav-link-item, .pillar .pillar-content-wrapper,
           .pillar .pillar-image, 
           .impact-image.animated, .pillar-image.animated,
-          #join, .section-title-subheading.animate-on-scroll {
+          #join, .header-logo-text:hover::before, .header-logo-text:hover::after,
+          .section-title-subheading.animate-on-scroll {
             animation: none !important;
             transition: none !important;
           }
           .animate-fadeInUp, .animate-slideInLeft, .animate-slideInRight, .animate-zoomIn,
-          .core-message-line span, .section-title-char-animate .char,
-          .pillar .pillar-content-wrapper, .pillar .pillar-image, .impact-image, .pillar-image {
+          .hero-headline-char, .core-message-line span > span, .section-title-char-animate .char,
+          .pillar .pillar-content-wrapper, .pillar .pillar-image, .impact-image, .pillar-image,
+          .header-logo-text:hover::before, .header-logo-text:hover::after {
              transform: none !important; 
+             clip-path: none !important;
           }
-          .animate-on-scroll, .core-message-line span, .section-title-char-animate .char, .pillar-image.animated {
+          .animate-on-scroll, .hero-headline-char, .core-message-line span > span, .section-title-char-animate .char, .pillar-image.animated {
              opacity: 1 !important; 
           }
           .section-title-subheading.animate-on-scroll {
@@ -191,11 +215,11 @@
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "SHOT",
-      "url": "YOUR_WEBSITE_URL_HERE", 
+      "url": "https://www.shotclubhouse.com/", 
       "description": "SHOT is where sport meets style, tech, and real impact. Own Your Sport. Style. Performance.",
       "potentialAction": {
         "@type": "SearchAction",
-        "target": "YOUR_WEBSITE_URL_HERE/search?q={search_term_string}", 
+        "target": "https://www.shotclubhouse.com/search?q={search_term_string}", 
         "query-input": "required name=search_term_string"
       }
     }
@@ -205,8 +229,8 @@
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "SHOT Clubhouse Ltd",
-      "url": "YOUR_WEBSITE_URL_HERE", 
-      "logo": "YOUR_LOGO_URL_HERE", /* Replace with your actual logo URL */
+      "url": "https://www.shotclubhouse.com/", 
+      "logo": "https://www.shotclubhouse.com/images/shot-logo-schema.png", 
       "sameAs": [
         "https://www.tiktok.com/@shotclubhouse",
         "https://www.instagram.com/shotclubhouse/",
@@ -279,6 +303,7 @@
             const root = document.documentElement;
             root.style.setProperty('--shot-teal-color', tailwind.config.theme.extend.colors['shot-teal']);
             root.style.setProperty('--shot-purple-glow', tailwind.config.theme.extend.colors['shot-purple-glow']);
+            root.style.setProperty('--shot-yellow-color', tailwind.config.theme.extend.colors['shot-yellow']); 
         });
     </script>
 
@@ -289,19 +314,20 @@
         <div id="hero-fallback-bg" style="display:none;" class="absolute top-0 left-0 w-full h-full object-cover z-0 brightness-[0.4] bg-shot-dark-grey"></div>
         <div class="absolute top-0 left-0 right-0 bottom-0 bg-gradient-to-b from-black/60 to-black/85 z-[1]"></div>
         <div class="relative z-[2] max-w-3xl mx-auto px-5">
-            <div class="mb-8 animate-on-scroll animate-fadeInUp" style="animation-delay: 0.2s;">
+            <div class="mb-6 animate-on-scroll animate-fadeInUp" style="animation-delay: 0.2s;">
                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZNxN2v-tgf_-t2Oic-m3dC2jtm3_zllEu-Q&s" alt="SHOT Logo" class="max-h-16 sm:max-h-20 w-auto mx-auto" onerror="this.src='https://placehold.co/200x80/000000/FFFFFF?text=SHOT+Logo'; this.onerror=null;">
             </div>
+            <h1 id="hero-headline" class="font-poppins font-extrabold uppercase tracking-widest text-xl sm:text-2xl md:text-3xl lg:text-4xl !leading-tight mb-6 break-words">Own Your <span class="whitespace-nowrap">Sport.</span> <br class="sm:hidden">Style. <br class="md:hidden"><span class="whitespace-nowrap">Performance.</span></h1>
             
-            <p class="text-base sm:text-lg md:text-xl text-shot-light-grey my-5 sm:my-8 leading-relaxed animate-on-scroll animate-fadeInUp" style="animation-delay: 0.6s;">Where sport meets style, tech, and real impact. From fans to ballers, coaches to creators – SHOT is your space to own your journey, culture, style, performance, and passion.</p>
-            <div class="font-poppins font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-shot-white mb-10 tracking-wider space-y-3 core-message-animate">
-                <div class="core-message-line"><span class="block text-shot-teal">TAKE YOUR SHOT.</span></div>
-                <div class="core-message-line"><span class="block text-shot-purple">OWN IT.</span></div>
-                <div class="core-message-line"><span class="block text-shot-yellow">MAKE IMPACT.</span></div>
+            <p class="text-base sm:text-lg md:text-xl text-shot-light-grey my-6 sm:my-8 leading-relaxed animate-on-scroll animate-fadeInUp" style="animation-delay: 0.6s;">SHOT is the movement for every player, fan, coach, and creator – the <strong class="font-semibold text-shot-white">Sport Head Originals Team</strong>. We're rewriting the old sports world, fusing sport, style, tech, and real impact. This is your space to own your journey, culture, and passion.</p>
+            <div class="font-poppins font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl text-shot-white mb-10 tracking-wider space-y-3 core-message-animate"> 
+                <div class="core-message-line"><span class="block text-shot-teal text-reveal-span">TAKE YOUR SHOT.</span></div>
+                <div class="core-message-line"><span class="block text-shot-purple text-reveal-span">OWN IT.</span></div>
+                <div class="core-message-line"><span class="block text-shot-yellow text-reveal-span">MAKE IMPACT.</span></div>
             </div>
             <div class="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-4 animate-on-scroll animate-fadeInUp" style="animation-delay: 1.2s;">
-                <a href="mailto:contact@shotclubhouse.com?subject=Clubhouse%20Waitlist" class="btn btn-teal w-full sm:w-auto">Join Waitlist</a>
-                <a href="mailto:contact@shotclubhouse.com?subject=Register%20for%20Drops" class="btn btn-purple w-full sm:w-auto">Register for Drops</a>
+                <a href="mailto:contact@shotclubhouse.com?subject=Clubhouse%20Waitlist" class="btn btn-teal w-full sm:w-auto">Be First: Join Waitlist</a>
+                <a href="mailto:contact@shotclubhouse.com?subject=Register%20for%20Drops" class="btn btn-purple w-full sm:w-auto">Register For Drops</a>
                 <a href="https://shot.classforkids.io/" target="_blank" class="btn btn-gold w-full sm:w-auto">Search Sessions</a>
             </div>
         </div>
@@ -311,7 +337,7 @@
         <div class="container mx-auto px-4">
             <div class="text-center mb-10 md:mb-16">
                 <h2 class="section-title-heading section-title-char-animate">Three Pillars<span class="text-shot-yellow">.</span> One Movement<span class="text-shot-yellow">.</span></h2>
-                <p class="section-title-subheading animate-on-scroll animate-fadeInUp" style="animation-delay: 0.3s;">SHOT isn't just a brand; it's how you play, live, and connect. It’s about your culture, your style, your performance, your journey, your passion. It all starts here.</p>
+                <p class="section-title-subheading animate-on-scroll animate-fadeInUp" style="animation-delay: 0.3s;">SHOT isn't just a brand; it's how the <strong class="font-semibold text-shot-white">Sport Head Originals Team</strong> plays, lives, and connects. It’s about your culture, your style, your performance, your journey, your passion. It all starts here.</p>
             </div>
             <div class="grid md:grid-cols-3 gap-6 md:gap-8 mt-12">
                 <div class="pillar border-l-4 border-shot-teal animate-on-scroll animate-fadeInUp" style="animation-delay: 0.2s;">
@@ -321,7 +347,7 @@
                         </div>
                         <div>
                             <h3 class="pillar-heading text-shot-teal">TAKE YOUR SHOT</h3>
-                            <p class="pillar-text"><strong>Who’s It For?</strong> This is for everyone: the players, parents, coaches, fans, clubs, and associations. <br><strong>The Vibe:</strong> Your moment is NOW. Jump in, try something new, grab that opportunity. Whether you're a baller, supporter, creator, or leader – you’re in. No egos, no filters. Courage meets opportunity.</p>
+                            <p class="pillar-text">Be fearless. Back your vision. Start it. Send it. Finish it. The jump. The risk. The go-for-it moment. As a <strong class="font-semibold text-shot-white">Sport Head Original</strong>, you have a unique perspective. SHOT gives you the platform. You bring the courage.</p>
                         </div>
                     </div>
                 </div>
@@ -332,7 +358,7 @@
                         </div>
                         <div>
                             <h3 class="pillar-heading text-shot-purple">OWN IT.</h3>
-                            <p class="pillar-text"><strong>The Core:</strong> This is where your SHOT journey becomes uniquely YOU. Own your style, culture, performance, progress, passion. From your custom Sport Head avatar to your training grind, your exclusive kit to your impact story – define and share who you are. Authenticity. Claim your place.</p>
+                            <p class="pillar-text">Show up loud. Your story, your style, your culture, your truth – unapologetically. Own your passion, your voice, your contribution. Be the <strong class="font-semibold text-shot-white">Sport Head Original</strong> you are. SHOT helps you show up as you. Your Sport Head avatar? That’s your badge.</p>
                         </div>
                     </div>
                 </div>
@@ -343,7 +369,7 @@
                         </div>
                         <div>
                             <h3 class="pillar-heading text-shot-yellow">MAKE IMPACT.</h3>
-                            <p class="pillar-text"><strong>The Ripple Effect:</strong> For the ambitious, the driven, the underdogs, the teams. Transform your ambition into real change – for yourself, your squad, your community. Back the underdog, change the game, together. Every goal, every drop, every connection fuels something bigger.</p>
+                            <p class="pillar-text">Your journey fuels others. Your actions build legacy. This is more than sport; it's a movement. As <strong class="font-semibold text-shot-white">One Team</strong>, our individual actions contribute to collective impact, changing the game for ourselves and our communities. When you move, others rise.</p>
                         </div>
                     </div>
                 </div>
@@ -366,8 +392,8 @@
     <section id="clubhouse-app" class="section bg-shot-black py-16 md:py-24 lg:py-32 animate-on-scroll animate-fadeInUp">
         <div class="container mx-auto px-4">
             <div class="text-center mb-10 md:mb-16">
-                <h2 class="section-title-heading section-title-char-animate">The Clubhouse<span class="text-shot-yellow">:</span> Your Digital Base<span class="text-shot-yellow">.</span> All Identity<span class="text-shot-yellow">.</span></h2>
-                <p class="section-title-subheading animate-on-scroll animate-fadeInUp" style="animation-delay: 0.3s;">Welcome to the SHOT Clubhouse – your 24/7 digital companion. Part coach, part content feed, part drop zone. 100% Sport Head.</p>
+                <h2 class="section-title-heading section-title-char-animate">The Clubhouse<span class="text-shot-yellow">.</span> Your Identity<span class="text-shot-yellow">.</span></h2>
+                <p class="section-title-subheading animate-on-scroll animate-fadeInUp" style="animation-delay: 0.3s;">Welcome to the SHOT Clubhouse – the digital headquarters and central nervous system of the SHOT ecosystem. It's your 24/7 companion where sports culture is lived, shared, and shaped by the <strong class="font-semibold text-shot-white">Sport Head Originals Team</strong>.</p>
             </div>
             <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
                 <div class="app-content order-2 md:order-1 animate-on-scroll animate-slideInLeft" style="animation-delay: 0.2s;">
@@ -381,7 +407,7 @@
                     </ul>
                     <p class="text-shot-light-grey mb-8 text-sm sm:text-base"><strong>AI-Powered Pathways:</strong> Our context-driven AI provides plans and pathways using guidance from world-leading sports bodies for football, boxing, basketball, and beyond.</p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                        <a href="mailto:contact@shotclubhouse.com?subject=Clubhouse%20App%20Waitlist" class="btn btn-primary w-full sm:w-auto">Join The Waitlist</a>
+                        <a href="mailto:contact@shotclubhouse.com?subject=Clubhouse%20App%20Waitlist" class="btn btn-primary w-full sm:w-auto">Get Early Access</a>
                     </div>
                 </div>
                 <div class="app-image-container order-1 md:order-2 text-center animate-on-scroll animate-slideInRight" style="animation-delay: 0.4s;">
@@ -400,8 +426,8 @@
     <section id="sport-head" class="section bg-shot-dark-grey py-16 md:py-24 lg:py-32 animate-on-scroll animate-fadeInUp">
         <div class="container mx-auto px-4">
             <div class="text-center mb-10 md:mb-16">
-                <h2 class="section-title-heading section-title-char-animate">You're Not Just a Player<span class="text-shot-purple">.</span> You're a <span class="text-shot-purple">Sport Head.</span></h2>
-                <p class="section-title-subheading animate-on-scroll animate-fadeInUp" style="animation-delay: 0.3s;">Your SHOT identity is more than stats – it’s how you show up. It’s your culture, your style, your passion, expressed. Your Sport Head is your unique, configurable digital avatar – unmistakably you.</p>
+                <h2 class="section-title-heading section-title-char-animate">Love Sport<span class="text-shot-purple">?</span> You're a <span class="text-shot-purple">Sport Head.</span></h2>
+                <p class="section-title-subheading animate-on-scroll animate-fadeInUp" style="animation-delay: 0.3s;">Your SHOT identity is more than stats – it’s your digital-physical passport to sport culture. Your unique, configurable <strong class="font-semibold text-shot-white">Sport Head avatar</strong> is how you show up, express your style, and own your journey in THE SHOT Ecosystem.</p>
             </div>
             <div class="text-center mb-10 animate-on-scroll animate-zoomIn" style="animation-delay: 0.2s;">
                  <span class="coming-soon-text">Sport Head Avatars: Coming Soon</span>
@@ -409,19 +435,19 @@
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mt-10">
                 <div class="highlight-card border-l-4 border-shot-purple animate-on-scroll animate-fadeInUp" style="animation-delay: 0.3s;">
                     <h4 class="highlight-card-heading">Your Unique Look</h4>
-                    <p class="highlight-card-text">Custom kit, unique style – make it yours. Millions of combinations, one you.</p>
+                    <p class="highlight-card-text">Custom kit, unique style – make it yours. Millions of combinations, one you. Your <strong class="font-semibold text-shot-white">Original</strong> identity.</p>
                 </div>
                 <div class="highlight-card border-l-4 border-shot-purple animate-on-scroll animate-fadeInUp" style="animation-delay: 0.4s;">
                     <h4 class="highlight-card-heading">Dynamic Timeline</h4>
-                    <p class="highlight-card-text">Track and share your progress, sessions, highlights, and streaks. Your journey, visualized.</p>
+                    <p class="highlight-card-text">Track and share your progress, sessions, highlights, and streaks. Your journey, visualized and amplified.</p>
                 </div>
                 <div class="highlight-card border-l-4 border-shot-purple animate-on-scroll animate-fadeInUp" style="animation-delay: 0.5s;">
                     <h4 class="highlight-card-heading">Multi-Sport Universe</h4>
-                    <p class="highlight-card-text">Football, boxing, basketball, and more – your identity flexes with your passions.</p>
+                    <p class="highlight-card-text">Football, boxing, basketball, and more – your identity flexes with your passions, all under one Sport Head ID.</p>
                 </div>
                 <div class="highlight-card border-l-4 border-shot-purple animate-on-scroll animate-fadeInUp" style="animation-delay: 0.6s;">
                     <h4 class="highlight-card-heading">Connected Experience</h4>
-                    <p class="highlight-card-text">Links your physical SHOT gear, exclusive drops, and your journey to your digital profile.</p>
+                    <p class="highlight-card-text">Links your physical SHOT gear (NFC-activated), exclusive drops, and your journey to your digital profile.</p>
                 </div>
             </div>
             <div class="text-center mt-12 animate-on-scroll animate-zoomIn" style="animation-delay: 0.7s;">
@@ -442,25 +468,31 @@
         <div class="container mx-auto px-4">
             <div class="text-center mb-10 md:mb-16">
                 <h2 class="section-title-heading text-shot-white section-title-char-animate">Style & Drops<span class="text-shot-yellow">:</span> Own The <span class="text-shot-yellow">Culture.</span></h2>
-                <p class="section-title-subheading !text-shot-light-grey/90 animate-on-scroll animate-fadeInUp" style="animation-delay: 0.3s;">SHOT drops are more than clothing – they're statements. Your culture, your style, your identity. Tech-enabled and always limited, each piece unlocks more or gives back.</p>
+                <p class="section-title-subheading !text-shot-light-grey/90 animate-on-scroll animate-fadeInUp" style="animation-delay: 0.3s;">SHOT LIFESTYLE is cultural currency. Limited drops, NFC-activated gear, and "Capsule SHOTs" co-created with titans of music, design, and sport. This is where your identity becomes your statement.</p>
             </div>
             <div class="space-y-10 md:space-y-16">
                 <div class="drop-item animate-on-scroll animate-fadeInUp" style="animation-delay: 0.2s;">
                     <h4 class="drop-item-heading">Erreà x SHOT</h4>
-                    <img src="https://i.imgur.com/l6bNTzT.jpg" alt="SHOT x Errea Streetwear Collaboration" class="drop-product-image" loading="lazy" onerror="this.src='https://placehold.co/400x300/121212/FFFFFF?text=Errea+x+SHOT'; this.onerror=null;">
-                    <p class="drop-item-text">From the Milan catwalk to the Italian terraces, SHOT x Erreà is where sport meets style, grit meets craft. Erreà has been the go-to for clubs that wear their identity with pride – Millwall, QPR, Sheffield United, Parma, Iceland, Norwich and more. Over 30 years of technical kit design, trusted from grassroots to global tournaments. Now, they link with SHOT – the British-born brand remixing sport culture with tech, style, and street credibility. This drop fuses Erreà’s elite heritage with SHOT’s raw energy, built for the next gen of ballers, fans and creators. Performance DNA. Street-level attitude. Culture made wearable.</p>
-                    <a href="mailto:contact@shotclubhouse.com?subject=Errea%20Collab%20First%20Access" class="btn btn-primary mt-6">Sign Up For First Access</a>
+                    <div class="drop-image-wrapper rounded-lg mb-4 mx-auto block max-w-md">
+                        <img src="https://i.imgur.com/l6bNTzT.jpg" alt="SHOT x Errea Streetwear Collaboration" class="drop-product-image" loading="lazy" onerror="this.src='https://placehold.co/400x300/121212/FFFFFF?text=Errea+x+SHOT'; this.onerror=null;">
+                        {/* Overlay removed as per request */}
+                    </div>
+                    <p class="drop-item-text">From Milan catwalks to Italian terraces, SHOT x Erreà fuses elite heritage with raw energy. Performance DNA. Street-level attitude. Culture made wearable for the next gen of <strong class="font-semibold text-shot-white">Sport Head Originals</strong>.</p>
+                    <a href="mailto:contact@shotclubhouse.com?subject=Errea%20Collab%20First%20Access" class="btn btn-primary mt-6">Get First Access</a>
                 </div>
                 <div class="drop-item animate-on-scroll animate-fadeInUp" style="animation-delay: 0.4s;">
                     <h4 class="drop-item-heading">SHOT Tech-Enabled Caps</h4>
-                    <img src="https://i.imgur.com/cZtu4Aw.png" alt="SHOT Tech-Enabled Cap" class="drop-product-image drop-product-image-square" loading="lazy" onerror="this.src='https://placehold.co/300x300/121212/FFFFFF?text=SHOT+Cap'; this.onerror=null;">
-                    <p class="drop-item-text">Dropping soon: the SHOT cap. Where style meets function. British grit. Italian craft. Embedded with smart tech. This isn’t just a cap – it’s your Sport Head in physical form. Tap or scan to unlock your SHOT profile. Track your stats, rep your level, and stay connected with your club or crew. From side streets to stadiums, this cap carries meaning. Tech you can wear. Style you can own. Take your shot.</p>
-                    <a href="mailto:contact@shotclubhouse.com?subject=SHOT%20Caps%20Notification" class="btn btn-outline mt-6">Get Notified For Cap Drops</a>
+                     <div class="drop-image-wrapper rounded-lg mb-4 mx-auto block max-w-xs">
+                        <img src="https://i.imgur.com/cZtu4Aw.png" alt="SHOT Tech-Enabled Cap" class="drop-product-image drop-product-image-square" loading="lazy" onerror="this.src='https://placehold.co/300x300/121212/FFFFFF?text=SHOT+Cap'; this.onerror=null;">
+                         {/* Overlay removed as per request */}
+                    </div>
+                    <p class="drop-item-text">More than a cap – it’s your Sport Head in physical form. British grit, Italian craft, embedded with smart NFC tech. Tap or scan to unlock your SHOT profile, track stats, and connect. Tech you wear. Style you own.</p>
+                    <a href="mailto:contact@shotclubhouse.com?subject=SHOT%20Caps%20Notification" class="btn btn-outline mt-6">Notify Me: Cap Drops</a>
                 </div>
             </div>
             <div class="mt-8 md:mt-12 pt-8 md:pt-12 border-t border-white/10 animate-on-scroll animate-fadeInUp" style="animation-delay: 0.6s;">
                 <h4 class="text-center font-poppins font-bold text-shot-teal text-xl sm:text-2xl mb-3">Tech-Enabled Exclusives</h4>
-                <p class="text-center max-w-xl mx-auto text-shot-light-grey/90 text-sm sm:text-base">Our limited capsule collections are your key. Tech-enabled drops unlock access to exclusive events, member-only perks, unique digital content for your Sport Head, and future brand collabs. Physical gear, digital power.</p>
+                <p class="text-center max-w-xl mx-auto text-shot-light-grey/90 text-sm sm:text-base">Our limited capsule collections are your key. Tech-enabled drops unlock exclusive events, member-only perks, unique digital content for your Sport Head, and future brand collabs. Physical gear, digital power.</p>
             </div>
         </div>
     </section>
@@ -468,8 +500,8 @@
          document.addEventListener('DOMContentLoaded', () => {
             applyClasses('.drop-item', 'bg-shot-dark-grey p-6 sm:p-8 rounded-lg text-center border border-white/10 transition-all duration-300 hover:shadow-xl hover:shadow-shot-yellow/20 hover:-translate-y-2'); 
             applyClasses('.drop-item-heading', 'font-poppins font-bold text-shot-yellow text-xl sm:text-2xl md:text-3xl mb-4');
-            applyClasses('.drop-product-image', 'w-full max-w-xs sm:max-w-sm md:max-w-md h-auto rounded-lg mb-4 mx-auto block transition-transform duration-300 hover:scale-105');
-            applyClasses('.drop-product-image-square', '!w-48 !h-48 sm:!w-60 sm:!h-60 md:!w-72 md:!h-72 object-cover');
+            applyClasses('.drop-product-image', 'w-full h-auto rounded-lg block transition-transform duration-300 hover:scale-105'); /* Changed from group-hover */
+            applyClasses('.drop-product-image-square', 'aspect-square object-cover'); 
             applyClasses('.drop-item-text', 'text-shot-light-grey/90 text-sm sm:text-base leading-relaxed');
         });
     </script>
@@ -478,7 +510,7 @@
         <div class="container mx-auto px-4">
             <div class="text-center mb-10 md:mb-16">
                 <h2 class="section-title-heading text-shot-white section-title-char-animate">Train Smarter<span class="text-shot-teal">.</span> Perform Stronger<span class="text-shot-teal">.</span> Own Your <span class="text-shot-teal">Development.</span></h2>
-                <p class="section-title-subheading !text-shot-light-grey/90 animate-on-scroll animate-fadeInUp" style="animation-delay: 0.3s;">Forget old-school limits. SHOT’s PERFORM framework brings elite coaching models, once reserved for pro academies, straight to you. Built with experts from UEFA, FA, world-class boxing, and more – this is real development, no fluff.</p>
+                <p class="section-title-subheading !text-shot-light-grey/90 animate-on-scroll animate-fadeInUp" style="animation-delay: 0.3s;">This is SHOT PERFORM: the definitive development framework. Rooted in expert knowledge, aligned with global best practices, and supercharged by AI. Your blueprint to <strong class="font-semibold text-shot-white">Take Your Shot, Own Your Development, and Make Real Impact</strong> – in any sport, at any level.</p>
             </div>
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mt-10">
                 <div class="perform-feature-card animate-on-scroll animate-fadeInUp" style="animation-delay:0.1s">
@@ -523,15 +555,15 @@
         <div class="container mx-auto px-4">
             <div class="text-center mb-10 md:mb-16">
                 <h2 class="section-title-heading !text-shot-black section-title-char-animate">Change Your Game<span class="text-shot-purple">.</span> Change <span class="text-shot-purple">The Game.</span></h2>
-                <p class="section-title-subheading !text-shot-dark-grey/90 animate-on-scroll animate-fadeInUp" style="animation-delay: 0.3s;">For the ambitious, the driven, the underdogs, the teams. "Make Impact" is about transforming your ambition into real change – for yourself, your squad, your community. Every SHOT you take, every piece you own, fuels this. It’s our DNA.</p>
+                <p class="section-title-subheading !text-shot-dark-grey/90 animate-on-scroll animate-fadeInUp" style="animation-delay: 0.3s;">This is SHOT United: our not-for-profit heart. We commit <strong class="font-semibold">2-5% of all SHOT revenue</strong> to fund tangible grassroots projects. Every SHOT you take, every piece you own, fuels real change.</p>
             </div>
             <h3 class="font-poppins font-bold text-xl sm:text-2xl md:text-3xl text-center sm:text-left mb-3 text-shot-black animate-on-scroll animate-fadeInUp" style="animation-delay:0.1s">Introducing SHOT United<span class="text-shot-purple">.</span></h3>
-            <p class="text-shot-dark-grey/90 mb-8 text-sm sm:text-base text-center sm:text-left animate-on-scroll animate-fadeInUp" style="animation-delay:0.2s">Our not-for-profit heart. SHOT United runs real-world football sessions, from <strong>Little SHOTs (ages 5+)</strong> to <strong>elite coaching for teens and adults</strong>. With over <strong>300+ players hitting the pitch with us every week</strong>, we're growing skills and passion. Your participation and purchases directly fund accessible grassroots coaching, development programs, and opportunities for the next generation. We partner with local sport clubs, associations, and more to deliver this impact.</p>
+            <p class="text-shot-dark-grey/90 mb-8 text-sm sm:text-base text-center sm:text-left animate-on-scroll animate-fadeInUp" style="animation-delay:0.2s">SHOT United runs real-world football sessions, from <strong>Little SHOTs (ages 5+)</strong> to <strong>elite coaching for teens and adults</strong>. With over <strong>300+ players hitting the pitch with us every week</strong>, we're growing skills and passion. Your participation and purchases directly fund accessible grassroots coaching, development programs, and opportunities for the next generation. We partner with local sport clubs, associations, and more to deliver this impact.</p>
 
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 mb-8 md:mb-12">
-                <img src="https://i.imgur.com/eYChVVG.jpg" alt="SHOT United coach with young football players" class="impact-image animate-on-scroll animate-zoomIn" style="animation-delay:0.3s" loading="lazy" onerror="this.src='https://placehold.co/400x250/121212/FFFFFF?text=Impact+1'; this.onerror=null;">
-                <img src="https://i.imgur.com/NQDJDgp.jpg" alt="SHOT United team in a huddle" class="impact-image animate-on-scroll animate-zoomIn" style="animation-delay:0.4s" loading="lazy" onerror="this.src='https://placehold.co/400x250/121212/FFFFFF?text=Impact+2'; this.onerror=null;">
-                <img src="https://i.imgur.com/FhPZXkY.jpg" alt="Kids enjoying a SHOT United football session" class="impact-image animate-on-scroll animate-zoomIn" style="animation-delay:0.5s" loading="lazy" onerror="this.src='https://placehold.co/400x250/121212/FFFFFF?text=Impact+3'; this.onerror=null;">
+                <img src="https://i.imgur.com/eYChVVG.jpg" alt="SHOT United coach with young football players" class="impact-image aspect-square animate-on-scroll animate-zoomIn" style="animation-delay:0.3s" loading="lazy" onerror="this.src='https://placehold.co/400x400/121212/FFFFFF?text=Impact+1'; this.onerror=null;">
+                <img src="https://i.imgur.com/NQDJDgp.jpg" alt="SHOT United team in a huddle" class="impact-image aspect-square animate-on-scroll animate-zoomIn" style="animation-delay:0.4s" loading="lazy" onerror="this.src='https://placehold.co/400x400/121212/FFFFFF?text=Impact+2'; this.onerror=null;">
+                <img src="https://i.imgur.com/FhPZXkY.jpg" alt="Kids enjoying a SHOT United football session" class="impact-image aspect-square animate-on-scroll animate-zoomIn" style="animation-delay:0.5s" loading="lazy" onerror="this.src='https://placehold.co/400x400/121212/FFFFFF?text=Impact+3'; this.onerror=null;">
             </div>
 
             <div class="flex flex-col sm:flex-row flex-wrap justify-around gap-5 md:gap-8 my-10 md:my-16">
@@ -555,7 +587,7 @@
     </section>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            applyClasses('.impact-image', 'w-full h-48 sm:h-56 md:h-64 object-cover rounded-lg shadow-lg transition-transform duration-300'); 
+            applyClasses('.impact-image', 'w-full h-auto object-cover rounded-lg shadow-lg transition-transform duration-300'); 
             applyClasses('.stat-item', 'text-center p-2 flex-grow basis-full sm:basis-1/4');
             applyClasses('.stat-number', 'font-poppins font-black text-shot-black text-4xl sm:text-5xl md:text-6xl block leading-none');
             applyClasses('.stat-label', 'text-xs sm:text-sm uppercase tracking-widest text-shot-dark-grey font-semibold mt-1 block');
@@ -565,8 +597,8 @@
     <section id="join" class="section bg-shot-purple py-16 md:py-24 lg:py-32 text-center animate-on-scroll animate-fadeInUp">
         <div class="container mx-auto px-4">
             <h2 class="section-title-heading text-shot-white section-title-char-animate">Ready To Take Your Shot<span class="text-shot-yellow">?</span></h2>
-            <p class="section-title-subheading !text-shot-light-grey/90 animate-on-scroll animate-fadeInUp" style="animation-delay:0.3s;">The SHOT Clubhouse app is launching soon. Be the first to build your Sport Head identity, access exclusive drops, and connect with a global community of Sport Heads.</p>
-            <a href="mailto:contact@shotclubhouse.com?subject=Join%20SHOT%20Clubhouse%20Waitlist" class="btn btn-primary !bg-shot-yellow !text-shot-black !px-8 !py-3 sm:!px-10 sm:!py-3.5 text-base sm:text-lg animate-on-scroll animate-zoomIn" style="animation-delay:0.5s;">Join The Waitlist Now</a>
+            <p class="section-title-subheading !text-shot-light-grey/90 animate-on-scroll animate-fadeInUp" style="animation-delay:0.3s;">The SHOT Clubhouse app is launching soon. Be the first to build your Sport Head identity, access exclusive drops, and connect with a global community of <strong class="font-semibold text-shot-white">Sport Head Originals</strong>.</p>
+            <a href="mailto:contact@shotclubhouse.com?subject=Join%20SHOT%20Clubhouse%20Waitlist" class="btn btn-primary !bg-shot-yellow !text-shot-black !px-8 !py-3 sm:!px-10 sm:!py-3.5 text-base sm:text-lg animate-on-scroll animate-zoomIn" style="animation-delay:0.5s;">Secure Your Spot: Join Waitlist</a>
             <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-4 mt-8 animate-on-scroll animate-fadeInUp" style="animation-delay:0.7s;">
                 <a href="mailto:contact@shotclubhouse.com?subject=Upcoming%20Drops%20Notification" class="btn btn-outline">Upcoming Drops</a>
                 <a href="mailto:partners@shotclubhouse.com?subject=Partnership%20Inquiry" class="btn btn-outline">Partner With SHOT</a>
@@ -624,10 +656,59 @@
             observer.observe(el);
         });
         
-        // --- Core Message Animation ---
+        // --- Hero Headline Character Animation ---
+        const heroHeadline = document.getElementById('hero-headline');
+        if (heroHeadline) {
+            const childNodes = Array.from(heroHeadline.childNodes); 
+            heroHeadline.innerHTML = ''; 
+            let charDelay = 0.4;
+            let charAnimIndex = 0;
+
+            function processHeroNode(node, parentElement) { 
+                if (node.nodeType === Node.TEXT_NODE) {
+                    const text = node.textContent;
+                    text.split('').forEach(char => {
+                        if (char === ' ') { 
+                            parentElement.appendChild(document.createTextNode(' ')); 
+                        } else if (char.trim() !== '') { 
+                            const span = document.createElement('span');
+                            span.className = 'hero-headline-char';
+                            span.textContent = char;
+                            span.style.animationDelay = `${charDelay + charAnimIndex * 0.03}s`;
+                            parentElement.appendChild(span); 
+                            charAnimIndex++;
+                        }
+                    });
+                } else if (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'BR') {
+                    parentElement.appendChild(node.cloneNode(true)); 
+                } else if (node.nodeType === Node.ELEMENT_NODE && node.classList.contains('whitespace-nowrap')) { 
+                    const wrapperSpan = node.cloneNode(false); 
+                    parentElement.appendChild(wrapperSpan);
+                    node.textContent.split('').forEach(char => { 
+                         if (char === ' ') {
+                            wrapperSpan.appendChild(document.createTextNode(' '));
+                        } else if (char.trim() !== '') {
+                            const charSpan = document.createElement('span');
+                            charSpan.className = 'hero-headline-char';
+                            charSpan.textContent = char;
+                            charSpan.style.animationDelay = `${charDelay + charAnimIndex * 0.03}s`;
+                            wrapperSpan.appendChild(charSpan);
+                            charAnimIndex++;
+                        }
+                    });
+                } else if (node.nodeType === Node.ELEMENT_NODE) { 
+                    const clonedElement = node.cloneNode(false);
+                    parentElement.appendChild(clonedElement); 
+                    Array.from(node.childNodes).forEach(child => processHeroNode(child, clonedElement)); 
+                }
+            }
+            childNodes.forEach(node => processHeroNode(node, heroHeadline));
+        }
+
+        // --- Core Message Animation (Solid Colors) ---
         const coreMessageLines = document.querySelectorAll('.core-message-animate .core-message-line');
         coreMessageLines.forEach((line, lineIndex) => {
-            const textSpan = line.querySelector('span'); 
+            const textSpan = line.querySelector('.text-reveal-span'); 
             if (textSpan) {
                 const words = textSpan.textContent.trim().split(' ');
                 textSpan.innerHTML = ''; 
